@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <body>
+      <div style="width: 100%;height: 100vh;" id="wt-container"></div>
+
+      <script src="https://www.whiteboard.team/dist/api.js"></script>
+      <script type="text/javascript">
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get("room");
+        console.log(myParam)
+        var wt = new api.WhiteboardTeam("#wt-container", {
+          clientId: "55bee2b972705d47c8713278b5093265",
+          boardCode: myParam,
+        });
+
+        wt.waitUntilReady()
+          .then((ctx) =>
+            console.log("The whiteboard is ready and user is: ", ctx.uid)
+          )
+          .catch((error) => console.log(error));
+      </script>
+    </body>
+  </body>
+</html>
